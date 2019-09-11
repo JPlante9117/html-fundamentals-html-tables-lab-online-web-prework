@@ -14,11 +14,54 @@
       <th>State</th>
       <th>2017 Estimate</th>
     </tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
+    <tr>
+      <td>New York</td>
+      <td>New York</td>
+      <td>8,622,698</td>
+    </tr>
+    <tr>
+      <td>Los Angeles</td>
+      <td>California</td>
+      <td>3,999,759</td>
+    </tr>
+    <tr>
+      <td>Chicago</td>
+      <td>Illinois</td>
+      <td>2,716,450</td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
   </table>
   
 </body>
 </html>
+
+expect(new_york.children[0].children[0].text).to eq("New York")
+    expect(new_york.children[2].children[0].text).to eq("New York")
+    expect(new_york.children[4].children[0].text).to be == "8,622,698"
+  end
+
+  it 'contains the correct information about California' do
+    new_york = parsed_html.search('table > tr')[2]
+
+    expect(new_york.children[0].children[0].text).to eq("Los Angeles")
+    expect(new_york.children[2].children[0].text).to eq("California")
+    expect(new_york.children[4].children[0].text).to be == "3,999,759"
+  end
+
+  it 'contains the correct information about Chicago' do
+    new_york = parsed_html.search('table > tr')[3]
+
+    expect(new_york.children[0].children[0].text).to eq("Chicago")
+    expect(new_york.children[2].children[0].text).to eq("Illinois")
+    expect(new_york.children[4].children[0].text).to be == "2,716,450"
+  end
+
+  it 'contains the correct information about Houston' do
+    new_york = parsed_html.search('table > tr')[4]
+
+    expect(new_york.children[0].children[0].text).to eq("Houston")
+    expect(new_york.children[2].children[0].text).to eq("Texas")
+    expect(new_york.children[4].children[0].text).to be == "2,312,717"
+  end
